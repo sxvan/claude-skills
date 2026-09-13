@@ -1,6 +1,6 @@
 # claude-skills
 
-A Claude Code plugin marketplace with skills for writing prose that does not read as AI generated, and for writing code a reviewer can check at a glance.
+A Claude Code plugin marketplace. Three skills: two that keep prose from reading as AI generated, one that keeps code reviewable at a glance.
 
 ## Install
 
@@ -11,19 +11,19 @@ A Claude Code plugin marketplace with skills for writing prose that does not rea
 /plugin install elegant-coding@claude-skills
 ```
 
-Or browse with `/plugin` after adding the marketplace.
+Or add the marketplace and browse it with `/plugin`. To test a local checkout, point the first command at the directory instead: `/plugin marketplace add /path/to/claude-skills`.
 
 ## Plugins
 
 | Plugin | What it does |
 | --- | --- |
-| `human-writing` | Word and punctuation choice. Removes the vocabulary and punctuation patterns that mark writing as AI generated. |
+| `human-writing` | Words and punctuation. Cuts the vocabulary and punctuation patterns that mark text as AI generated. |
 | `human-structure` | What a message says and how it is shaped: length, ordering, prose versus lists, and whether a sentence carries information. |
 | `elegant-coding` | Code whose correctness is visible at a glance: invalid states made unrepresentable rather than guarded against, few branches, and a small diff. |
 
-Each plugin is a skill, so Claude loads it on its own when the task calls for it. You can also invoke one directly by name.
+Each plugin holds one skill, so Claude reads its description and loads it when the task matches. You can also name it directly.
 
-## Layout
+## Repository layout
 
 ```
 .claude-plugin/marketplace.json     the marketplace manifest
@@ -34,19 +34,6 @@ plugins/<plugin>/
 eval/                               A/B runner: each case once with the skill, once without
 ```
 
-## Adding a skill
+To add a skill, write `plugins/<name>/.claude-plugin/plugin.json` and `plugins/<name>/skills/<name>/SKILL.md`, then add an entry to the `plugins` array in `.claude-plugin/marketplace.json`. Once it is pushed, users pick it up with `/plugin marketplace update claude-skills`.
 
-1. Create `plugins/<name>/.claude-plugin/plugin.json` and `plugins/<name>/skills/<name>/SKILL.md`.
-2. Add an entry to the `plugins` array in `.claude-plugin/marketplace.json`.
-3. Commit and push. Users get it with `/plugin marketplace update claude-skills`.
-
-## Local testing
-
-```
-/plugin marketplace add /home/silvan/repos/claude-skills
-/plugin install human-writing@claude-skills
-```
-
-## License
-
-MIT
+MIT licensed.
