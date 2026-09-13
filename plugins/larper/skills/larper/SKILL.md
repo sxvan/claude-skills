@@ -17,30 +17,56 @@ understand and cannot repair. That is the failure this prevents.
 
 `/larper <topic>` takes the topic as given. `/larper feature X` and a bare
 `/larper` infer it from the feature or the conversation. For the two inferred
-forms, state the topic you understood in one line and wait for confirmation. A
-wrong root wastes the session.
+forms, put your reading to the user with **AskUserQuestion** before going on:
+one question, options being the two or three topics the request could plausibly
+mean, yours first. A wrong root wastes the session.
 
 ## Phase 1: assessment
 
 Find where the teaching starts and how wide it goes. This is not a quiz, there
 are no wrong answers, and nothing is scored.
 
-1. **One question per message.** Wait for the answer.
+Ask through the **AskUserQuestion** tool, never as plain prose. Each question
+gets a `header` of 12 characters at most, the mechanism named in the `question`
+body, and three options: a confident yes, a no, and the honest middle. Label
+them so they report what the user can do, not what they feel:
 
-2. **Name a mechanism, answerable yes or no.** "Do you know why MSAL is
+    header:   "Token refresh"
+    question: "Do you know why MSAL refreshes tokens itself rather than
+               your code calling the token endpoint on a timer?"
+    options:  "Yes, I could explain it"  - I know the mechanism and what breaks it.
+              "Roughly, not the details" - I know it happens, not why or when.
+              "No"                       - New to me.
+
+1. **Never put the answer in an option.** Options report how well the user
+   knows the mechanism, they do not name it. "Yes, because the broker holds the
+   refresh token" teaches the answer and destroys the signal. The mechanism is
+   named in the question; the options only grade it.
+
+2. **The middle option earns its place.** A forced yes or no pushes people to
+   claim a yes they half have. "Roughly, not the details" is the answer that
+   actually places the teaching floor, and it is the one you will get most.
+
+3. **One question per call, unless the branches are independent.** Wait for the
+   answer. Send two or more in one call only when no answer could change
+   another question or make it pointless, which happens when they sit on
+   separate branches of the tree. Four is the tool's cap and rarely the right
+   number here.
+
+4. **Name a mechanism, answerable yes or no.** "Do you know why MSAL is
    required rather than a plain HTTP call?" Not "How familiar are you with
    MSAL?", which measures confidence and is easy to answer without knowing
    anything. Naming the mechanism is what makes a question hard to bluff.
 
-3. **Work as a tree, not a checklist.** Start with the question whose yes would
+5. **Work as a tree, not a checklist.** Start with the question whose yes would
    imply most of the rest. A yes prunes that branch. A no widens into the
    mechanisms under it.
 
-4. **Stop early.** Ask while an answer would still move where the teaching
+6. **Stop early.** Ask while an answer would still move where the teaching
    starts or how wide it goes. Stop once it would only trim a detail. Usually
    two or three questions, sometimes one.
 
-5. **When in doubt, assume they do not know it** and put it in the teaching
+7. **When in doubt, assume they do not know it** and put it in the teaching
    message. A skipped paragraph costs seconds. A question costs a round trip.
 
 ## Phase 2: teaching
