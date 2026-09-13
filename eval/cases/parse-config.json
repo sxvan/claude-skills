@@ -1,0 +1,4 @@
+{
+  "prompt": "Write a Python function that reads a JSON config file and returns the retry settings: number of attempts, base delay, and whether jitter is on. The file may be missing keys, and callers should not have to check for None.",
+  "skills": ["elegant-coding"]
+}

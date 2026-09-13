@@ -1,0 +1,4 @@
+{
+  "prompt": "Write a release note for version 2.3 of an internal CLI called `deploy`. It adds a --dry-run flag, fixes a crash when the config file is missing, and drops support for Node 16.",
+  "skills": ["human-writing", "human-structure"]
+}

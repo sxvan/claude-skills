@@ -1,0 +1,4 @@
+{
+  "prompt": "A teammate asks why their request times out only in production. The cause is a connection pool of size 5 shared by a worker that holds a connection while waiting on an external API. Explain it to them in a chat message.",
+  "skills": ["human-writing", "human-structure"]
+}

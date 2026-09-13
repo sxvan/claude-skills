@@ -1,0 +1,10 @@
+{
+  "name": "human-structure",
+  "description": "What a message says and how it is shaped: length, ordering, prose versus lists, and whether a sentence carries information.",
+  "version": "1.0.0",
+  "author": { "name": "Silvan Büchi" },
+  "homepage": "https://github.com/sxvan/claude-skills",
+  "repository": "https://github.com/sxvan/claude-skills",
+  "license": "MIT",
+  "keywords": ["writing", "structure", "docs", "communication"]
+}

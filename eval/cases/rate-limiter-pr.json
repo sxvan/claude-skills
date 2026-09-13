@@ -1,0 +1,4 @@
+{
+  "prompt": "A background worker calls a third-party API that allows 10 requests per second per API key. Write a token bucket rate limiter for it in Python, then write the pull request description that ships it, for reviewers who have not seen the code.",
+  "skills": ["human-writing", "human-structure", "elegant-coding"]
+}

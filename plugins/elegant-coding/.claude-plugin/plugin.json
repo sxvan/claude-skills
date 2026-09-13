@@ -1,0 +1,10 @@
+{
+  "name": "elegant-coding",
+  "description": "The default working mode for software work. Code whose correctness is visible at a glance: invalid states made unrepresentable rather than guarded against, few branches, and a diff a reviewer can check quickly.",
+  "version": "1.0.0",
+  "author": { "name": "Silvan Büchi" },
+  "homepage": "https://github.com/sxvan/claude-skills",
+  "repository": "https://github.com/sxvan/claude-skills",
+  "license": "MIT",
+  "keywords": ["code", "review", "refactoring", "design", "quality"]
+}

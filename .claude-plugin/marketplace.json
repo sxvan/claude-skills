@@ -1,0 +1,69 @@
+{
+  "name": "claude-skills",
+  "owner": {
+    "name": "Silvan Büchi",
+    "email": "silvan.buechi01@outlook.com",
+    "url": "https://github.com/sxvan"
+  },
+  "metadata": {
+    "description": "Skills for prose that does not read as AI generated, and for code a reviewer can check at a glance.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "human-writing",
+      "source": "./plugins/human-writing",
+      "description": "Word and punctuation choice. Removes the vocabulary and punctuation patterns that mark writing as AI generated.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Silvan Büchi"
+      },
+      "homepage": "https://github.com/sxvan/claude-skills",
+      "license": "MIT",
+      "keywords": [
+        "writing",
+        "editing",
+        "style",
+        "prose"
+      ],
+      "category": "productivity"
+    },
+    {
+      "name": "human-structure",
+      "source": "./plugins/human-structure",
+      "description": "What a message says and how it is shaped: length, ordering, prose versus lists, and whether a sentence carries information.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Silvan Büchi"
+      },
+      "homepage": "https://github.com/sxvan/claude-skills",
+      "license": "MIT",
+      "keywords": [
+        "writing",
+        "structure",
+        "docs",
+        "communication"
+      ],
+      "category": "productivity"
+    },
+    {
+      "name": "elegant-coding",
+      "source": "./plugins/elegant-coding",
+      "description": "The default working mode for software work. Code whose correctness is visible at a glance: invalid states made unrepresentable rather than guarded against, few branches, and a diff a reviewer can check quickly.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Silvan Büchi"
+      },
+      "homepage": "https://github.com/sxvan/claude-skills",
+      "license": "MIT",
+      "keywords": [
+        "code",
+        "review",
+        "refactoring",
+        "design",
+        "quality"
+      ],
+      "category": "productivity"
+    }
+  ]
+}

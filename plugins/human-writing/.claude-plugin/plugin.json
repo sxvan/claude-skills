@@ -1,0 +1,10 @@
+{
+  "name": "human-writing",
+  "description": "Word and punctuation choice. Removes the vocabulary and punctuation patterns that mark writing as AI generated.",
+  "version": "1.0.0",
+  "author": { "name": "Silvan Büchi" },
+  "homepage": "https://github.com/sxvan/claude-skills",
+  "repository": "https://github.com/sxvan/claude-skills",
+  "license": "MIT",
+  "keywords": ["writing", "editing", "style", "prose"]
+}
