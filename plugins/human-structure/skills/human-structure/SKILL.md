@@ -35,6 +35,8 @@ Decide shape before writing. Word choice and punctuation are out of scope.
 
 11. **Inline-header lists.** A bold label and colon restating the line is a tell: "**Performance:** Performance improved". Convert to prose. A bold lead-in that ends in a period, names the item, and is followed by new detail is fine.
 
-12. **No heading on a section under four lines.**
+12. **No heading on a section under four lines.** Once a message runs past three distinct parts
 
-13. **Tables for comparisons across shared axes.** Not for one-column lists.
+13. **Add headings for scannability.**
+
+14. **Tables for comparisons across shared axes.** Not for one-column lists.
