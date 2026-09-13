@@ -1,0 +1,10 @@
+{
+  "name": "grilling",
+  "description": "Grill the user relentlessly about a plan, decision, or idea, one round of questions per frontier of the design tree.",
+  "version": "1.0.0",
+  "author": { "name": "Silvan Büchi" },
+  "homepage": "https://github.com/sxvan/claude-skills",
+  "repository": "https://github.com/sxvan/claude-skills",
+  "license": "MIT",
+  "keywords": ["planning", "design", "questions", "review"]
+}

@@ -1,27 +1,16 @@
 # claude-skills
 
-A Claude Code plugin marketplace. Three skills: two that keep prose from reading as AI generated, one that keeps code reviewable at a glance.
+A Claude Code plugin marketplace. Each plugin holds one skill.
 
 ## Install
 
 ```
 /plugin marketplace add sxvan/claude-skills
-/plugin install human-writing@claude-skills
-/plugin install human-structure@claude-skills
-/plugin install elegant-coding@claude-skills
 ```
 
-Or add the marketplace and browse it with `/plugin`. To test a local checkout, point the first command at the directory instead: `/plugin marketplace add /path/to/claude-skills`.
+Then browse and install with `/plugin`. To test a local checkout, point the first command at the directory instead: `/plugin marketplace add /path/to/claude-skills`.
 
-## Plugins
-
-| Plugin | What it does |
-| --- | --- |
-| `human-writing` | Words and punctuation. Cuts the vocabulary and punctuation patterns that mark text as AI generated. |
-| `human-structure` | What a message says and how it is shaped: length, ordering, prose versus lists, and whether a sentence carries information. |
-| `elegant-coding` | Code whose correctness is visible at a glance: invalid states made unrepresentable rather than guarded against, few branches, and a small diff. |
-
-Each plugin holds one skill, so Claude reads its description and loads it when the task matches. You can also name it directly.
+Claude reads a skill's description and loads it when the task matches. You can also name it directly. Skills marked `disable-model-invocation` only run when you invoke them.
 
 ## Repository layout
 
