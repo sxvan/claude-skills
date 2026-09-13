@@ -2,6 +2,7 @@
   "enabledPlugins": {
     "human-writing@claude-skills": true,
     "human-structure@claude-skills": true,
-    "elegant-coding@claude-skills": true
+    "elegant-coding@claude-skills": true,
+    "larper@claude-skills": true
   }
 }

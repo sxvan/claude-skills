@@ -1,0 +1,10 @@
+{
+  "name": "larper",
+  "description": "Teach the user the domain behind a feature before any design or code exists. A short assessment, then one teaching message.",
+  "version": "1.0.0",
+  "author": { "name": "Silvan Büchi" },
+  "homepage": "https://github.com/sxvan/claude-skills",
+  "repository": "https://github.com/sxvan/claude-skills",
+  "license": "MIT",
+  "keywords": ["learning", "research", "domain", "onboarding"]
+}
