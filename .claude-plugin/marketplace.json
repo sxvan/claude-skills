@@ -100,6 +100,25 @@
         "review"
       ],
       "category": "productivity"
+    },
+    {
+      "name": "odoo-upgrade-v18-to-v19",
+      "source": "./plugins/odoo-upgrade-v18-to-v19",
+      "description": "Upgrade Odoo modules from version 18 to version 19: breaking changes, renamed APIs, and the migration steps a module needs.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Silvan Büchi"
+      },
+      "homepage": "https://github.com/sxvan/claude-skills",
+      "license": "MIT",
+      "keywords": [
+        "odoo",
+        "upgrade",
+        "migration",
+        "erp",
+        "python"
+      ],
+      "category": "productivity"
     }
   ]
 }
