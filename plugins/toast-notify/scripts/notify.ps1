@@ -30,6 +30,8 @@ $text2 = New-BTText -Content $msg
 $binding = New-BTBinding -Children $text1, $text2 -AppLogoOverride $logo
 $visual = New-BTVisual -BindingGeneric $binding
 
-$content = New-BTContent -Visual $visual -ActivationType Protocol -Launch "vscode://anthropic.claude-code/open?session=$session_id"
+$launch = 'vsclaude://open?session={0}&folder={1}&distro={2}' -f ($session_id, $ProjectDir, $Distro | ForEach-Object { [Uri]::EscapeDataString($_) })
+
+$content = New-BTContent -Visual $visual -ActivationType Protocol -Launch $launch
 
 Submit-BTNotification -Content $content -UniqueIdentifier $session_id
