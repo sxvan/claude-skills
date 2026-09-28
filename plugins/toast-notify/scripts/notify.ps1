@@ -44,8 +44,9 @@ $xml.LoadXml(@"
   <visual>
     <binding template="ToastGeneric">
       <image placement="appLogoOverride" hint-crop="circle" src="$([Security.SecurityElement]::Escape($logo))"/>
-      <text>$([Security.SecurityElement]::Escape("$project - $title"))</text>
+      <text>Claude responded</text>
       <text>$([Security.SecurityElement]::Escape($msg))</text>
+      <text placement="attribution">via VSClaude</text>
     </binding>
   </visual>
 </toast>
