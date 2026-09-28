@@ -8,7 +8,12 @@ if ($data.background_tasks){
   exit 
 }
 
-$msg  = $data.last_assistant_message
+# PreToolUse only fires for AskUserQuestion, whose input carries the question instead of a last message
+$msg  = if ($data.hook_event_name -eq 'PreToolUse') { 
+  $data.tool_input.questions[0].question 
+  } else { 
+    $data.last_assistant_message 
+  } 
 $cwd  = $data.cwd
 $session_id = $data.session_id
 $transcript_path = $data.transcript_path
