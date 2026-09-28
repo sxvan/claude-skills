@@ -26,6 +26,6 @@ eval/                               A/B runner: each case once with the skill, o
 
 To add a skill, write `plugins/<name>/.claude-plugin/plugin.json` and `plugins/<name>/skills/<name>/SKILL.md`, then add an entry to the `plugins` array in `.claude-plugin/marketplace.json`. Once it is pushed, users pick it up with `/plugin marketplace update claude-skills`.
 
-The `toast-notify` plugin runs on WSL only and needs the [BurntToast](https://github.com/Windos/BurntToast) module on the Windows side: `Install-Module BurntToast` in PowerShell.
+The `toast-notify` plugin runs on WSL only.
 
 MIT licensed.

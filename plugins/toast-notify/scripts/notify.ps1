@@ -22,16 +22,30 @@ if (Test-Path $transcript) {
 
 if (-not $title) { $title = 'Claude Code' }
 
-$logo = New-BTImage -Source (Join-Path $PSScriptRoot '..\assets\claude-ai-logo.png') -AppLogoOverride -Crop Circle
+$null = [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime]
+$null = [Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom, ContentType = WindowsRuntime]
 
-$text1 = New-BTText -Content "$project - $title"
-$text2 = New-BTText -Content $msg
+# PowerShell's own app ID, which Windows accepts without registering anything
+$appId = '{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\WindowsPowerShell\v1.0\powershell.exe'
 
-$binding = New-BTBinding -Children $text1, $text2 -AppLogoOverride $logo
-$visual = New-BTVisual -BindingGeneric $binding
-
+$logo   = Join-Path $PSScriptRoot '..\assets\claude-ai-logo.png'
 $launch = 'vsclaude://open?session={0}&folder={1}&distro={2}' -f ($session_id, $ProjectDir, $Distro | ForEach-Object { [Uri]::EscapeDataString($_) })
 
-$content = New-BTContent -Visual $visual -ActivationType Protocol -Launch $launch
+$xml = New-Object Windows.Data.Xml.Dom.XmlDocument
+$xml.LoadXml(@"
+<toast activationType="protocol" launch="$([Security.SecurityElement]::Escape($launch))">
+  <visual>
+    <binding template="ToastGeneric">
+      <image placement="appLogoOverride" hint-crop="circle" src="$([Security.SecurityElement]::Escape($logo))"/>
+      <text>$([Security.SecurityElement]::Escape("$project - $title"))</text>
+      <text>$([Security.SecurityElement]::Escape($msg))</text>
+    </binding>
+  </visual>
+</toast>
+"@)
 
-Submit-BTNotification -Content $content -UniqueIdentifier $session_id
+$toast = New-Object Windows.UI.Notifications.ToastNotification $xml
+# A later toast from the same session replaces this one
+$toast.Tag = $session_id
+
+[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier($appId).Show($toast)

@@ -5,4 +5,4 @@ New-Item -Path "$key\shell\open\command" -Force | Out-Null
 Set-ItemProperty -Path $key -Name '(Default)'    -Value 'URL:vsclaude'
 Set-ItemProperty -Path $key -Name 'URL Protocol' -Value ''
 Set-ItemProperty -Path "$key\shell\open\command" -Name '(Default)' `
-  -Value "powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$handler`" `"%1`""
+  -Value "conhost.exe --headless powershell.exe -NoProfile -ExecutionPolicy Bypass -File `"$handler`" `"%1`""

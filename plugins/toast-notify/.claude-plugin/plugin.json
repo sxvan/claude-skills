@@ -1,7 +1,7 @@
 {
   "name": "toast-notify",
-  "description": "Windows toast notification when Claude finishes a turn, showing the session title and last message. Requires WSL and the BurntToast PowerShell module.",
-  "version": "1.0.0",
+  "description": "Windows toast notification when Claude finishes a turn, showing the session title and last message. Requires WSL.",
+  "version": "1.1.0",
   "author": { "name": "Silvan Büchi" },
   "homepage": "https://github.com/sxvan/claude-skills",
   "repository": "https://github.com/sxvan/claude-skills",
