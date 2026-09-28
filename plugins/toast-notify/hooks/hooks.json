@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"$(wslpath -w \"${CLAUDE_PLUGIN_ROOT}/scripts/notify.ps1\")\" -ProjectDir \"$CLAUDE_PROJECT_DIR\" -Distro \"$WSL_DISTRO_NAME\""
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 # claude-skills
 
-A Claude Code plugin marketplace. Each plugin holds one skill.
+A Claude Code plugin marketplace. Each plugin holds one skill or one hook.
 
 ## Install
 
@@ -20,9 +20,12 @@ plugins/<plugin>/
   .claude-plugin/plugin.json        the plugin manifest
   skills/<skill>/SKILL.md           the skill
   skills/<skill>/references/        examples and other files loaded on demand
+  hooks/hooks.json                  hook config; reference plugin files via ${CLAUDE_PLUGIN_ROOT}
 eval/                               A/B runner: each case once with the skill, once without
 ```
 
 To add a skill, write `plugins/<name>/.claude-plugin/plugin.json` and `plugins/<name>/skills/<name>/SKILL.md`, then add an entry to the `plugins` array in `.claude-plugin/marketplace.json`. Once it is pushed, users pick it up with `/plugin marketplace update claude-skills`.
+
+The `toast-notify` plugin runs on WSL only and needs the [BurntToast](https://github.com/Windos/BurntToast) module on the Windows side: `Install-Module BurntToast` in PowerShell.
 
 MIT licensed.
