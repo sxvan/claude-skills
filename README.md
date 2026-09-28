@@ -26,6 +26,12 @@ eval/                               A/B runner: each case once with the skill, o
 
 To add a skill, write `plugins/<name>/.claude-plugin/plugin.json` and `plugins/<name>/skills/<name>/SKILL.md`, then add an entry to the `plugins` array in `.claude-plugin/marketplace.json`. Once it is pushed, users pick it up with `/plugin marketplace update claude-skills`.
 
-The `toast-notify` plugin runs on WSL only.
+The `toast-notify` plugin runs on WSL only. It registers a `vsclaude://` link handler and one notification app ID per session in the Windows registry. Plugins get no uninstall hook, so these stay behind. To remove them, run this in PowerShell:
+
+```powershell
+Remove-Item 'HKCU:\Software\Classes\AppUserModelId\VSClaude.*' -Recurse
+Remove-Item 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\VSClaude.*' -Recurse
+Remove-Item 'HKCU:\Software\Classes\vsclaude' -Recurse
+```
 
 MIT licensed.

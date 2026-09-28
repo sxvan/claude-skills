@@ -25,10 +25,17 @@ if (-not $title) { $title = 'Claude Code' }
 $null = [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime]
 $null = [Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom, ContentType = WindowsRuntime]
 
-# PowerShell's own app ID, which Windows accepts without registering anything
-$appId = '{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\WindowsPowerShell\v1.0\powershell.exe'
+# Windows can't load toast images from \\wsl.localhost paths
+$logo = Join-Path $env:TEMP 'claude-ai-logo.png'
+Copy-Item (Join-Path $PSScriptRoot '..\assets\claude-ai-logo.png') $logo -Force
 
-$logo   = Join-Path $PSScriptRoot '..\assets\claude-ai-logo.png'
+# One app ID per session, so the notification center groups toasts by session instead of collapsing them all
+$appId  = "VSClaude.$session_id"
+$appKey = "HKCU:\Software\Classes\AppUserModelId\$appId"
+New-Item -Path $appKey -Force | Out-Null
+Set-ItemProperty -Path $appKey -Name 'DisplayName' -Value "$project - $title"
+Set-ItemProperty -Path $appKey -Name 'IconUri'     -Value $logo
+
 $launch = 'vsclaude://open?session={0}&folder={1}&distro={2}' -f ($session_id, $ProjectDir, $Distro | ForEach-Object { [Uri]::EscapeDataString($_) })
 
 $xml = New-Object Windows.Data.Xml.Dom.XmlDocument
@@ -45,7 +52,6 @@ $xml.LoadXml(@"
 "@)
 
 $toast = New-Object Windows.UI.Notifications.ToastNotification $xml
-# A later toast from the same session replaces this one
 $toast.Tag = $session_id
 
 [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier($appId).Show($toast)
