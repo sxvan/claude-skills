@@ -3,6 +3,11 @@ param([string]$ProjectDir, [string]$Distro)
 
 [Console]::InputEncoding = [Text.Encoding]::UTF8
 $data = [Console]::In.ReadToEnd() | ConvertFrom-Json
+
+if ($data.background_tasks){ 
+  exit 
+}
+
 $msg  = $data.last_assistant_message
 $cwd  = $data.cwd
 $session_id = $data.session_id
